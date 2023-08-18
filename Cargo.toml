@@ -1,0 +1,23 @@
+[package]
+name = "conveyor-belt"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+# Warning https://doc.rust-lang.org/cargo/reference/manifest.html#the-authors-field
+#authors = ["Mark Hähnel"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+anyhow = { version = "1.0.75" }
+tokio = { version = "1.32.0", features = ["full"] }
+
+
+# See more at https://github.com/johnthagen/min-sized-rust
+[profile.release]
+#codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+
+[lib]
+crate-type = ["rlib"]
