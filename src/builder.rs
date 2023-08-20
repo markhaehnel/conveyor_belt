@@ -10,6 +10,7 @@ pub struct Builder<T> {
 }
 
 impl<T> Builder<T> {
+    #[must_use]
     pub fn new() -> Self {
         Self {
             name: "default".to_owned(),
@@ -19,21 +20,25 @@ impl<T> Builder<T> {
         }
     }
 
+    #[must_use]
     pub fn name(mut self, name: String) -> Self {
         self.name = name;
         self
     }
 
+    #[must_use]
     pub fn retry_strategy(mut self, retry_strategy: RetryStrategy) -> Self {
         self.retry_strategy = retry_strategy;
         self
     }
 
+    #[must_use]
     pub fn timeout(mut self, timeout: Duration) -> Self {
         self.timeout = timeout;
         self
     }
 
+    #[must_use]
     pub fn build(self) -> Queue<T> {
         Queue::<T>::new(self.name, self.retry_strategy, self.timeout)
     }

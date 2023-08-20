@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-#[derive(PartialEq, Debug, Clone)]
+#[derive(PartialEq, Eq, Debug, Clone)]
 pub enum RetryStrategy {
     None,
     Linear(Duration),

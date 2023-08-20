@@ -2,7 +2,7 @@ use std::{collections::VecDeque, time::Duration};
 
 use parking_lot::Mutex;
 
-use crate::retry_strategy::{self, RetryStrategy};
+use crate::retry_strategy::RetryStrategy;
 
 pub struct Queue<T: 'static> {
     name: String,
@@ -13,6 +13,7 @@ pub struct Queue<T: 'static> {
 }
 
 impl<T: 'static> Queue<T> {
+    #[must_use]
     pub fn new(name: String, retry_strategy: RetryStrategy, timeout: Duration) -> Self {
         Self {
             name,
