@@ -1,4 +1,4 @@
-# Contributing to conveyor-belt
+# Contributing to conveyor_belt
 
 We love your input!
 
