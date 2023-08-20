@@ -1,5 +1,6 @@
 [package]
 name = "conveyor_belt"
+description = "Queue and batch processing library"
 repository = "https://github.com/markhaehnel/conveyor_belt"
 version = "0.1.0"
 edition = "2021"
