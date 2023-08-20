@@ -32,7 +32,18 @@ jobs:
         id: release
         with:
           release-type: rust
-          prerelease: true
+
+      # The logic below handles the crates.io publication
+      - uses: dtolnay/rust-toolchain@stable
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: Swatinem/rust-cache@v2
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/checkout@v2
+        # these if statements ensure that a publication only occurs when
+        # a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+      - run: cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
+        if: ${{ steps.release.outputs.release_created }}
 
   ci:
     name: Patrol
