@@ -1,13 +1,12 @@
-use conveyor_belt::{builder::Builder, retry_strategy::RetryStrategy};
+use conveyor_belt::{memory_queue::MemoryQueue, retry_strategy::RetryStrategy};
 
 #[tokio::main]
 async fn main() {
-    // use builder to create a queue
-    let _queue = Builder::<usize>::new()
-        .name("test".to_string())
-        .retry_strategy(RetryStrategy::None)
-        .timeout(std::time::Duration::from_secs(1))
-        .build();
+    let _queue = MemoryQueue::<usize>::new(
+        "test".to_string(),
+        RetryStrategy::None,
+        std::time::Duration::from_secs(1),
+    );
 
     // TODO: finish this example
 }
